@@ -73,7 +73,53 @@ cleanData <- function(data) {
   data %<>% group_by(country, date) %>% summarise(count=sum(count)) %>% as.data.frame()
   return(data)
 }
+# clean the three datasets
 data.confirmed %<>% cleanData() %>% rename(confirmed=count)  
 data.deaths %<>% cleanData() %>% rename(deaths=count)
 data.recovered %<>% cleanData() %>% rename(recovered=count)
 
+# merge above 3 datasets into one, by country and date
+data <- data.confirmed %>% merge(data.deaths) %>% merge(data.recovered)
+
+# countries/regions with confirmed cases (excl cruise ships)
+countries <- data %>% pull(country) %>% setdiff('Cruise Ship')
+
+# first 10 records when it first broke out in China
+data %>% filter(country =='China')%>% head(10)
+
+## Cases for the Whole World
+# counts for worldwide
+data.world <- data %>% group_by(date) %>%
+  summarise(country='World',
+            confirmed=sum(confirmed),
+            deaths=sum(deaths),
+            recovered=sum(recovered))
+
+data %<>% rbind(data.world)
+
+# remaining confirmed cases
+data %<>% mutate(remaining.confirmed = confirmed - deaths - recovered)
+
+# Daily Increases and Death Rates
+
+# rate.upper = total deaths and recovered cases
+# rate.lower = total deaths and confirmed cases
+# expected death rate is to be between above rates
+# rate.daily =daily deaths and recovered cases
+
+## sort by country and date
+data %<>% arrange(country,date)
+# daily increases of deaths and recovered cases
+# set NA to increase on day1
+n <- nrow(data)
+day1 <- min(data$date) # set NA day1
+data %<>% mutate(confirmed.inc=ifelse(date ==day1,NA, confirmed - lag(confirmed, n=1)),
+                 deaths.inc=ifelse(date ==day1,NA,deaths - lag(deaths, n=1)),
+                 recovered.inc=ifelse(date ==day1,NA,recovered - lag(recovered, n=1)))
+
+# death rate base on total deaths and recovered cases
+data %<>% mutate(rate.upper = (100 *deaths / (deaths + recovered)) %>% round(1))
+# lower bound: death rate based on total confirmed cases
+data %<>% mutate(rate.lower = (100 * deaths / confirmed) %>% round(1))
+# death rate based on number f death/recovered on every single day
+data %<>% mutate(rate.daily = (100 * deaths.inc / (deaths.inc + recovered.inc)) %>% round(1))
