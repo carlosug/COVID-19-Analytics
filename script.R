@@ -48,8 +48,32 @@ data.confirmed[1:10, 1:10] %>%
 # check time frame of the data
 n.col <- ncol(data.confirmed) # 58 variables
 # get dates from column names
-dates <- names(data.confirmed[5:n.col]) %>%
-  substr(2,8) %>% mdy()
+dates <- names(data.confirmed)[5:n.col] %>%
+  substr(1,8) %>%  mdy()
 
 range(dates)
-min(dates)
+min.date <- min(dates)
+max.date <- max(dates)
+# last update on 15 March 2020 max.date
+  
+# Data Preparation steps:
+# 1.From wide to long format
+# 2.Aggregate by country
+# 3. merge into a signe dataset
+# cleaning and transformation
+names(data.confirmed)
+cleanData <- function(data) {
+  ## remove non esential cols temporary
+  data %<>% select(-c("Province/State", "Lat", "Long")) %>% rename(country="Country/Region")
+  ## convert from wide to long format
+  data %<>% gather(key=data, value = count, -country)
+  ## convert from character to date
+  data %<>% mutate(date= date %>% substr(1,8) %>% mdy())
+  # aggregate by country
+  data %<>% group_by(country,date) %>% summarise(count=sum(count)) %>% as.data.frame()
+  return(data)
+}
+
+# clean the three datasets
+data.confirmed %<>% cleanData() %>% rename(confirmed=count)
+rlang
