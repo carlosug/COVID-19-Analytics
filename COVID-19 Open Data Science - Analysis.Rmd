@@ -1,9 +1,23 @@
-# This is an analysis report of the Novel Coronavirus (COVID-19)
-# Aim for data processing, visualisation and statstics
+---
+title: "COVID-19 Open Data Science - Analysis"
+author: "Carlos Utrilla Guerrero"
+date: "March 17, 2020"
+output:
+  html_document: default
+  pdf_document: default
+---
+_This is a developing story. Check back for updates_
+
+This is an analysis report of the Novel Coronavirus (COVID-19)
+Aim for data processing, visualisation and statstics.
+Data provided by Johns Hopkins University [github](https://github.com/CSSEGISandData/COVID-19)
+
+Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
+
+```{r}
+
 # Source code: http://yanchang.rdatamining.com/
-# set directory
-setwd("~/Github/COVID-19")
-# Data Source: 2019 Data Repository https://github.com/CSSEGISandData/COVID-19
+
 # R Packages:
 library(magrittr) # pipline operations
 library(lubridate) # date operation
@@ -11,7 +25,9 @@ library(tidyverse) # data science pips
 library(gridExtra) # grid based plots
 library(kableExtra) # build HTML and LaTeX tables
 library(dplyr)
+```
 
+```{r}
 # Loading data
 # At first, three CSV files, are downloaded and saved as local files
 # and then loaded into R
@@ -39,15 +55,8 @@ data.recovered <- read.csv('./data/time_series_19-covid-Recovered.csv')
 
 # check dimension of data confirmed
 dim(data.confirmed)
-
-# each dataset has 450 cases as rows that corresponds to
-# country/region/province/state. It has also 58 cols,
-# starting from nb 5, it represents days
-
-# Look at first 10 rows and 10 cols
-#data.confirmed[1:10, 1:10] %>%
-# kable('latex', booktabs = T, caption = 'Raw Data (Confirmed, First 10 Cols') %>%
-#kable_styling(font_size = 6, latex_options = c('striped','hold_position','repeat_header'))
+```
+```{r}
 
 # check time frame of the data
 n.col <- ncol(data.confirmed) # 58 variables
@@ -102,6 +111,9 @@ data %<>% rbind(data.world)
 # remaining confirmed cases
 data %<>% mutate(remaining.confirmed = confirmed - deaths - recovered)
 
+```
+
+```{r}
 # Daily Increases and Death Rates
 
 # rate.upper = total deaths and recovered cases
@@ -125,7 +137,8 @@ data %<>% mutate(rate.upper = (100 *deaths / (deaths + recovered)) %>% round(1))
 data %<>% mutate(rate.lower = (100 * deaths / confirmed) %>% round(1))
 # death rate based on number f death/recovered on every single day
 data %<>% mutate(rate.daily = (100 * deaths.inc / (deaths.inc + recovered.inc)) %>% round(1))
-
+```
+```{r}
 # Visualisation
 # After preparing the data, we portrait it in various graphs
 
@@ -222,7 +235,8 @@ plot2 <- p + geom_line(aes(color=country, linetype=country)) +
   scale_y_continuous(trans = 'log10')
 # shows two plots together
 grid.arrange(plot1, plot2, ncol=1)
-
+```
+```{r}
 # # # list(countries) == 'Netherlands'
 
 ## If The Netherland is not top 20, add it in and remove 'Others'
@@ -267,7 +281,7 @@ df %>% filter(type != 'Confirmed') %>%
 
 ### Current confirmed cases:
 #data.test <- data %>% filter(country %in% c('Italy', 'Spain', 'Netherlands'))
-data %<>% filter(country=='World')
+data %<>% filter(country== 'World')
 n <- nrow(data)
 # current confirmed and it is increase with worldwide case
 plot1 <- ggplot(data, aes(x = date, y=remaining.confirmed)) +
@@ -321,7 +335,8 @@ plot2 <- ggplot(data[n-(14:0),], aes(x=date)) +
         axis.text.x=element_text(angle=45, hjust=1))
 grid.arrange(plot1, plot2, nrow=1)
 
-
+```
+```{r}
 # COVID-19 Cases Worldwide
 
 # sort by date, descending order
@@ -332,3 +347,10 @@ data %<>% arrange(desc(date)) %>%
 data %<>% kable('latex', booktabs=T, longtable =T, caption='Cases Worldwide',
                       format.args = list(big.mark=',')) %>%
   kable_styling(font_size = 5, latex_options = c('striped', 'hold_position','repeat_header'))
+```
+
+Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+
+When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+
+The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
