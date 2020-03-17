@@ -172,3 +172,29 @@ data.long %<>% mutate(type =recode_factor(type, confirmed= 'Confirmed',
                                           remaining.confirmed = 'Remaining Confirmed',
                                           recovered= 'Recovered',
                                           deaths='Deaths'))
+# plot cases by type
+df <- data.long %>% filter(country %in% top.countries) %<>%
+  mutate(country=country %>% factor(levels=c(top.countries)))
+
+
+### CASES AROUND WORLD
+p <- df%>% filter(country !='World') %>%
+  ggplot(aes(x=date, y=count)) + xlab('') + ylab('Count') +
+  theme(legend.title=element_blank(),
+        legend.text = element_text(size=6),
+        legend.key.size=unit(0.6, 'cm'),
+        axis.text.x=element_text(angle = 45, hjust=1)) +
+  facet_wrap(~type, ncol = 2, scale='free_y')
+# area plot
+plot1 <- p + geom_area(aes(fill=country)) +
+  labs(title='Cases around the World')
+# line plot and in log scale
+linetypes <- rep(c('solid','dashed','dotted'), each=8)
+colors <- rep(c('black','blue','red','green','orange', 'purple', 'yellow', 'grey'), 3)
+plot2 <- p + geom_line(aes(color=country, linetype=country)) +
+  scale_linetype_manual(values = linetypes) +
+  scale_color_manual(values = colors) +
+  labs(title = 'Cases around the world - Log Scale') +
+  scale_y_continuous(trans = 'log10')
+# shows two plots together
+grid.arrange(plot1, plot2, ncol=1)
