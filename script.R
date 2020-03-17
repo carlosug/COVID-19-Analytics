@@ -4,7 +4,7 @@
 # Data Source: 2019 Data Repository https://github.com/CSSEGISandData/COVID-19
 # R Packages:
 library(magrittr) # pipline operations
-library(lubridate) # data operation
+library(lubridate) # date operation
 library(tidyverse) # data science pips
 library(gridExtra) # grid based plots
 library(kableExtra) # build HTML and LaTeX tables
@@ -55,7 +55,7 @@ range(dates)
 
 min.date <- min(dates)
 max.date <- max(dates)
-# last update on 15 March 2020 max.date
+# last update on 16 March 2020 max.date
 
 # Data Preparation steps:
 # 1.From wide to long format
@@ -123,3 +123,52 @@ data %<>% mutate(rate.upper = (100 *deaths / (deaths + recovered)) %>% round(1))
 data %<>% mutate(rate.lower = (100 * deaths / confirmed) %>% round(1))
 # death rate based on number f death/recovered on every single day
 data %<>% mutate(rate.daily = (100 * deaths.inc / (deaths.inc + recovered.inc)) %>% round(1))
+
+# Visualisation
+# After preparing the data, we portrait it in various graphs
+
+# TOP Ten Countries
+# ranking by confirmed cases
+data.latest <- data %>% filter(date ==max(date)) %>%
+                                select(country, date, confirmed, deaths, recovered, remaining.confirmed) %>%
+                                mutate(ranking = dense_rank(desc(confirmed)))
+# top 10 countries incl 11 World
+top.countries <- data.latest %>% filter(ranking <= 11) %>%
+  arrange(ranking) %>% pull(country) %>% as.character()
+top.countries %>% setdiff('World') %>% print()
+
+## add 'Others'
+top.countries %<>% c('Others')
+## put all others in a single group of 'Others'
+df <- data.latest %>% filter(!is.na(country) & country!= 'World')%>%
+  mutate(country=ifelse(ranking <= 11, as.character(country), 'Others')) %>%
+  mutate(country=country %>% factor(levels = c(top.countries)))
+df %<>% group_by(country) %>% summarise(confirmed=sum(confirmed))  
+
+# percentage and label
+df %<>% mutate(per = (100*confirmed/sum(confirmed)) %>% round(1)) %>%
+                 mutate(txt = paste0(country, ': ', confirmed, '(', per, '%)'))
+df %>% ggplot(aes(fill=country)) +
+  geom_bar(aes(x ='', y = per), stat= 'identity') +
+  coord_polar('y', start =0) +
+  xlab('') + ylab('Percentage (%)') +
+  labs(title=paste0('Top 10 Countries with Most Confirmed Cases (', max.date,')')) +
+  scale_fill_discrete(name='Country', labels = df$txt) +
+  theme(legend.title = element_blank(), legend.text = element_text((size=7)))
+
+data.latest %>% filter(country %in% top.countries) %>% select(-c(date, ranking)) %>%
+                                                                arrange(desc(confirmed)) %>%
+                                                                kable('latex', booktabs=T, row.names=T,
+                                                                      caption = paste0('Cases in Top Ten Countries (', max.date, '). See complete list of all infected countries at the annex A'),
+                                                                        format.args = list(big.mark = ',')) %>%
+                                                                kable_styling(font_size = 7, latex_options = c('striped', 'hold_position', 'repeat_header'))
+ # Comparison across Countries
+# convert from wide to long format, for drawing area plot
+data.long <- data %>%
+  select(c(country, date, confirmed, remaining.confirmed, recovered, deaths)) %>%
+  gather(key = type, value = count, -c(country,date))
+# set for factor levels to show them in a desirable order
+data.long %<>% mutate(type =recode_factor(type, confirmed= 'Confirmed',
+                                          remaining.confirmed = 'Remaining Confirmed',
+                                          recovered= 'Recovered',
+                                          deaths='Deaths'))
