@@ -1,20 +1,20 @@
 ---
-documentclass: article
 title: "Data Science - COVID-19"
 author: "Carlos Utrilla Guerrero"
-date: "3/18/2020"
-output: pdf_document
+date: "3/19/2020"
+output: html_document
+df_print: paged
+documentclass: article
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## COVID-19 Pandemia. On going FAIR data science pipeline.
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+This is an R Markdown document. It is intented to publicy illustrate data from [Johns Hopkins University](https://github.com/CSSEGISandData/COVID-19) and [FAIR](https://www.go-fair.org/fair-principles/) data science.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
 ```{r cars}
 # This is an analysis report of the Novel Coronavirus (COVID-19)
@@ -358,11 +358,12 @@ grid.arrange(plot1, plot2, nrow=1)
 data %<>% arrange(desc(date)) %>%
   select(c(date, confirmed, deaths, recovered, remaining.confirmed,
            confirmed.inc, deaths.inc, recovered.inc, rate.lower, rate.upper, rate.daily))
-# output as table
-data %<>% kable(booktabs=T, longtable =T, caption='Cases Worldwide',
-                      format.args = list(big.mark=',')) %>%
-  kable_styling(font_size = 5, latex_options = c('striped', 'hold_position','repeat_header'))
 
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+# Latest Cases by Country - TOP confirmed cases
+data.latest %>% arrange(desc(confirmed)) %>% select(-c(date)) %>% head(15)
+```
+
+Note that this is an developing story. Check back for updates.
