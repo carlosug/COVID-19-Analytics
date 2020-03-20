@@ -1,0 +1,9 @@
+{
+    "path" : "~/Github/COVID-19/outputs",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}

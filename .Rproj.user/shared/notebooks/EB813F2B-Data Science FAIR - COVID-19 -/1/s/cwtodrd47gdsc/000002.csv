@@ -1,0 +1,5 @@
+"0","# COVID-19 Cases Worldwide"
+"0","# sort by date, descending order"
+"0","data %<>% arrange(desc(date)) %>%"
+"0","  select(c(date, confirmed, deaths, recovered, remaining.confirmed,"
+"0","           confirmed.inc, deaths.inc, recovered.inc, rate.lower, rate.upper, rate.daily))"

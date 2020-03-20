@@ -1,0 +1,2 @@
+"0","# Latest Cases by Country - TOP confirmed cases"
+"0","data.latest %>% arrange(desc(confirmed)) %>% select(-c(date)) %>% head(15)"
