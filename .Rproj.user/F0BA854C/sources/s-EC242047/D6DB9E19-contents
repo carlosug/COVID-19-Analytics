@@ -52,11 +52,15 @@ Death rate!
 
 ### Ranking Tables
 
-Case by country
+
 ![outputs/table1.png](outputs/table1.jpg)
 
-Top 15
+Case by country
+
+
 ![outputs/table2.png](outputs/table2.jpg)
+
+Top 15
 
 ## Reference and reproducible output
 
@@ -64,7 +68,7 @@ The pipeline is inspired by [Yanchang Zhao](URL: http://www.rdatamining.com/docs
 
 _COVID-19 Data Analysis with Tidyverse and Ggplot2 – Worldwide. RDataMining.com, 2020._
 
-Output for Jupyter [COVID-Descriptives](https://github.com/carlosug/COVID-19-Analytics/blob/master/outputs/Data%20Science%20in%20R%20workshop.ipynb)
+Output for Jupyter [COVID-Descriptives](Data Science in R workshop.ipynb)
 
 
 
