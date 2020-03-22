@@ -26,7 +26,7 @@ See [data science pipeline](src/script.R) for technical details regarding data c
 
 ## :chart_with_upwards_trend: Graphs globally
 
-The following graphs show the development of Coronavirus on a daily basis. The [graphs](/graphs) are updated on an hourly basis and were generated automatically. Please validate the numbers in the graphs before publishing. See the license section for information about sharing the graphs.
+The following graphs show the development of Coronavirus on a daily basis. The [outputs](/outputs) are updated on an hourly basis and were generated automatically. Please validate the numbers in the graphs before publishing. See the license section for information about sharing the graphs.
 
 ![outputs/output_8_1.png](outputs/output_8_1.png)
 
