@@ -53,10 +53,10 @@ Death rate!
 ### Ranking Tables
 
 Case by country
-![outputs/table1.png](outputs/table1.png)
+![outputs/table1.png](outputs/table1.jpg)
 
 Top 15
-![outputs/table2.png](outputs/table2.png)
+![outputs/table2.png](outputs/table2.jpg)
 
 ## Reference and reproducible output
 

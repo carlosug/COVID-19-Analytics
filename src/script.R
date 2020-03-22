@@ -332,3 +332,28 @@ data %<>% arrange(desc(date)) %>%
 data %<>% kable('latex', booktabs=T, longtable =T, caption='Cases Worldwide',
                       format.args = list(big.mark=',')) %>%
   kable_styling(font_size = 5, latex_options = c('striped', 'hold_position','repeat_header'))
+
+
+### output JPG ###
+library(extrafont)
+library(magick)
+library(tidyverse)
+library(magrittr)
+library(webshot)
+library(kableExtra)
+table <- data.latest %>% arrange(desc(confirmed)) %>% select(-c(date, ranking)) %>% kable('html', booktabs=T, longtable=T, row.names=T,caption=paste0('Cases by Country 22/03/2020'),format.args=list(big.mark=',')) %>%
+  save_kable("test.jpg")
+
+data.latest %>% arrange(desc(confirmed)) %>% select(-c(date)) %>% head(15) %>% kable('html', booktabs=T, longtable=T, row.names=T,caption=paste0('Cases by Country 22/03/2020'),format.args=list(big.mark=',')) %>%
+  save_kable("test2.jpg")
+
+
+kable(mtcars, "latex", booktabs = T) %>%
+  kable_styling(latex_options = c("striped", "scale_down")) %>%
+  row_spec(1, color = "red") %>%
+  as_image()
+
+kable(mtcars[1:5, ], "latex") %>%
+  kable_styling("striped") %>%
+  row_spec(1, color = "red") %>%
+  save_kable("test.pdf")
