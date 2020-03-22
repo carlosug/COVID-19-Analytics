@@ -50,6 +50,14 @@ a log axis they deviate from the line quite drastically!
 Death rate!
 ![outputs/output_15_1.png](outputs/output_15_1.png)
 
+### Ranking Tables
+
+Case by country
+![outputs/table1.png](outputs/table1.png)
+
+Top 15
+![outputs/table2.png](outputs/table2.png)
+
 ## Reference and reproducible output
 
 The pipeline is inspired by [Yanchang Zhao](URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf). Citation:
