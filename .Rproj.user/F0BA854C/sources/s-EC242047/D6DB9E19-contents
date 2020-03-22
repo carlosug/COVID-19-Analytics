@@ -22,7 +22,7 @@ Datasets:
 
 Suggest on this project is appreciated. I am looking for new features for the data pipelines.
 
-See data science pipeline [/.github/src](/.github/src/script.R) for technical details regarding data collection and cleaning.
+See [data science pipeline](src/script.R) for technical details regarding data collection and cleaning.
 
 ## :chart_with_upwards_trend: Graphs globally
 
@@ -52,7 +52,9 @@ Death rate!
 
 ## Reference and reproducible output
 
-The pipeline is inspired by are licensed [Yanchang Zhao, COVID-19 Data Analysis with Tidyverse and Ggplot2 – Worldwide. RDataMining.com, 2020.](URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf). 
+The pipeline is inspired by [Yanchang Zhao](URL: http://www.rdatamining.com/docs/Coronavirus-data-analysis-world.pdf). Citation:
+
+_COVID-19 Data Analysis with Tidyverse and Ggplot2 – Worldwide. RDataMining.com, 2020._
 
 Output for Jupyter [COVID-Descriptives](https://github.com/carlosug/COVID-19-Analytics/blob/master/outputs/Data%20Science%20in%20R%20workshop.ipynb)
 
