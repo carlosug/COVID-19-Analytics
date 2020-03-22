@@ -1,6 +1,0 @@
-"0","data.latest %>% filter(country %in% top.countries) %>% select(-c(date, ranking)) %>%"
-"0","                                                                arrange(desc(confirmed)) %>%"
-"0","                                                                kable(booktabs=T, row.names=T,"
-"0","                                                                      caption = paste0('Cases in Top Ten Countries (', max.date, '). See complete list of all infected countries at the annex A'),"
-"0","                                                                        format.args = list(big.mark = ',')) %>%"
-"0","                                                                kable_styling(font_size = 7, latex_options = c('striped', 'hold_position', 'repeat_header'))"

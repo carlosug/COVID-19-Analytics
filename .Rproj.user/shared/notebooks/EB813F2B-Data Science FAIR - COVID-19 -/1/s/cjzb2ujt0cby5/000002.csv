@@ -1,4 +1,0 @@
-"0","# Table:"
-"0","data.confirmed[1:10, 1:10] %>%"
-"0","kable(booktabs = T, caption = 'Raw Data (Confirmed, First 10 Cols') %>%"
-"0","kable_styling(font_size = 6, latex_options = c('striped','hold_position','repeat_header'))"
