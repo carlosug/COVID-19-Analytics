@@ -1,4 +1,4 @@
-# Coronavirus disease data analysis Worlwide
+# Coronavirus disease (COVID-19) data analysis Worldwide
 Ongoing data science pipeline to process, analyse and visualise COVID-19 pandemia data. The intented goal is to illustrate with data cleaning, processing and visualisation pipelines, the most update packages and libraries for doing Data Science with R
 
 
