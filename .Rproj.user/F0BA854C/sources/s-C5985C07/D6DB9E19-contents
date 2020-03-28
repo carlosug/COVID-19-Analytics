@@ -71,9 +71,9 @@ The pipeline is inspired by [Yanchang Zhao](http://www.rdatamining.com/docs/Coro
 
 _COVID-19 Data Analysis with Tidyverse and Ggplot2 – Worldwide. RDataMining.com, 2020._
 
-Output for Jupyter [COVID-Descriptives](Data Science in R workshop.ipynb)
+Output for Jupyter [COVID-Descriptives](Data%20Science%20in%20R%20workshop.ipynb)
 
-PDF Format [COVID-Descriptives](outputs/Data-Science-FAIR---COVID-19--)
+PDF Format [COVID-Descriptives](outputs/Data-Science-FAIR---COVID-19--.pdf)
 
 
 
