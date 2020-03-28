@@ -1,0 +1,11 @@
+"0","## Cases for the Whole World"
+"0","# counts for worldwide"
+"0","data.world <- data %>% group_by(date) %>%"
+"0","  summarise(country='World',"
+"0","            confirmed=sum(confirmed),"
+"0","            deaths=sum(deaths))"
+"0",""
+"0","data %<>% rbind(data.world)"
+"2","Error in rbind(deparse.level, ...) : 
+  numbers of columns of arguments do not match
+"

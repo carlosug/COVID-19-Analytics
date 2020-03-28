@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<style>body{background-color:white;}</style>
+<script src="lib/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="lib/bootstrap-3.3.5/css/simplex.min.css" rel="stylesheet" />
+<script src="lib/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="lib/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="lib/kePrint-0.0.1/kePrint.js"></script>
+
+</head>
+<body>
+<table class="table" style="font-size: 7px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">Top 20 Countries with Highest Death Rates - 26 Mar 2020</caption>
+ <thead>
+  <tr>
+   <th style="text-align:left;">   </th>
+   <th style="text-align:left;"> country </th>
+   <th style="text-align:right;"> confirmed </th>
+   <th style="text-align:right;"> confirmed.new </th>
+   <th style="text-align:right;"> remaining.confirmed </th>
+   <th style="text-align:right;"> recovered </th>
+   <th style="text-align:right;"> deaths </th>
+   <th style="text-align:right;"> deaths.new </th>
+   <th style="text-align:right;"> death.rate </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> 1 </td>
+   <td style="text-align:left;"> Italy </td>
+   <td style="text-align:right;"> 80,589 </td>
+   <td style="text-align:right;"> 6,203 </td>
+   <td style="text-align:right;"> 62,013 </td>
+   <td style="text-align:right;"> 10,361 </td>
+   <td style="text-align:right;"> 8,215 </td>
+   <td style="text-align:right;"> 712 </td>
+   <td style="text-align:right;"> 10.2% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 2 </td>
+   <td style="text-align:left;"> San Marino </td>
+   <td style="text-align:right;"> 208 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 183 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 21 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 10.1% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 3 </td>
+   <td style="text-align:left;"> Iraq </td>
+   <td style="text-align:right;"> 382 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 241 </td>
+   <td style="text-align:right;"> 105 </td>
+   <td style="text-align:right;"> 36 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 9.4% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 4 </td>
+   <td style="text-align:left;"> Indonesia </td>
+   <td style="text-align:right;"> 893 </td>
+   <td style="text-align:right;"> 103 </td>
+   <td style="text-align:right;"> 780 </td>
+   <td style="text-align:right;"> 35 </td>
+   <td style="text-align:right;"> 78 </td>
+   <td style="text-align:right;"> 20 </td>
+   <td style="text-align:right;"> 8.7% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 5 </td>
+   <td style="text-align:left;"> Iran </td>
+   <td style="text-align:right;"> 29,406 </td>
+   <td style="text-align:right;"> 2,389 </td>
+   <td style="text-align:right;"> 16,715 </td>
+   <td style="text-align:right;"> 10,457 </td>
+   <td style="text-align:right;"> 2,234 </td>
+   <td style="text-align:right;"> 157 </td>
+   <td style="text-align:right;"> 7.6% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 6 </td>
+   <td style="text-align:left;"> Spain </td>
+   <td style="text-align:right;"> 57,786 </td>
+   <td style="text-align:right;"> 8,271 </td>
+   <td style="text-align:right;"> 46,406 </td>
+   <td style="text-align:right;"> 7,015 </td>
+   <td style="text-align:right;"> 4,365 </td>
+   <td style="text-align:right;"> 718 </td>
+   <td style="text-align:right;"> 7.6% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 7 </td>
+   <td style="text-align:left;"> Algeria </td>
+   <td style="text-align:right;"> 367 </td>
+   <td style="text-align:right;"> 65 </td>
+   <td style="text-align:right;"> 313 </td>
+   <td style="text-align:right;"> 29 </td>
+   <td style="text-align:right;"> 25 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 6.8% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 8 </td>
+   <td style="text-align:left;"> Philippines </td>
+   <td style="text-align:right;"> 707 </td>
+   <td style="text-align:right;"> 71 </td>
+   <td style="text-align:right;"> 634 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 45 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 6.4% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 9 </td>
+   <td style="text-align:left;"> Netherlands </td>
+   <td style="text-align:right;"> 7,468 </td>
+   <td style="text-align:right;"> 1,030 </td>
+   <td style="text-align:right;"> 7,027 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 435 </td>
+   <td style="text-align:right;"> 78 </td>
+   <td style="text-align:right;"> 5.8% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 10 </td>
+   <td style="text-align:left;"> France </td>
+   <td style="text-align:right;"> 29,551 </td>
+   <td style="text-align:right;"> 3,951 </td>
+   <td style="text-align:right;"> 22,898 </td>
+   <td style="text-align:right;"> 4,955 </td>
+   <td style="text-align:right;"> 1,698 </td>
+   <td style="text-align:right;"> 365 </td>
+   <td style="text-align:right;"> 5.7% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 11 </td>
+   <td style="text-align:left;"> United Kingdom </td>
+   <td style="text-align:right;"> 11,812 </td>
+   <td style="text-align:right;"> 2,172 </td>
+   <td style="text-align:right;"> 11,082 </td>
+   <td style="text-align:right;"> 150 </td>
+   <td style="text-align:right;"> 580 </td>
+   <td style="text-align:right;"> 114 </td>
+   <td style="text-align:right;"> 4.9% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 12 </td>
+   <td style="text-align:left;"> Egypt </td>
+   <td style="text-align:right;"> 495 </td>
+   <td style="text-align:right;"> 39 </td>
+   <td style="text-align:right;"> 369 </td>
+   <td style="text-align:right;"> 102 </td>
+   <td style="text-align:right;"> 24 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4.8% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 13 </td>
+   <td style="text-align:left;"> Burkina Faso </td>
+   <td style="text-align:right;"> 152 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 135 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 7 </td>
+   <td style="text-align:right;"> 3 </td>
+   <td style="text-align:right;"> 4.6% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 14 </td>
+   <td style="text-align:left;"> China </td>
+   <td style="text-align:right;"> 81,782 </td>
+   <td style="text-align:right;"> 121 </td>
+   <td style="text-align:right;"> 4,310 </td>
+   <td style="text-align:right;"> 74,181 </td>
+   <td style="text-align:right;"> 3,291 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 4.0% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 15 </td>
+   <td style="text-align:left;"> Morocco </td>
+   <td style="text-align:right;"> 275 </td>
+   <td style="text-align:right;"> 50 </td>
+   <td style="text-align:right;"> 256 </td>
+   <td style="text-align:right;"> 8 </td>
+   <td style="text-align:right;"> 11 </td>
+   <td style="text-align:right;"> 5 </td>
+   <td style="text-align:right;"> 4.0% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 16 </td>
+   <td style="text-align:left;"> Hungary </td>
+   <td style="text-align:right;"> 261 </td>
+   <td style="text-align:right;"> 35 </td>
+   <td style="text-align:right;"> 223 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 10 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 3.8% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 17 </td>
+   <td style="text-align:left;"> Belgium </td>
+   <td style="text-align:right;"> 6,235 </td>
+   <td style="text-align:right;"> 1,298 </td>
+   <td style="text-align:right;"> 5,340 </td>
+   <td style="text-align:right;"> 675 </td>
+   <td style="text-align:right;"> 220 </td>
+   <td style="text-align:right;"> 42 </td>
+   <td style="text-align:right;"> 3.5% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 18 </td>
+   <td style="text-align:left;"> Albania </td>
+   <td style="text-align:right;"> 174 </td>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 151 </td>
+   <td style="text-align:right;"> 17 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 3.4% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 19 </td>
+   <td style="text-align:left;"> Japan </td>
+   <td style="text-align:right;"> 1,387 </td>
+   <td style="text-align:right;"> 80 </td>
+   <td style="text-align:right;"> 981 </td>
+   <td style="text-align:right;"> 359 </td>
+   <td style="text-align:right;"> 47 </td>
+   <td style="text-align:right;"> 2 </td>
+   <td style="text-align:right;"> 3.4% </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> 20 </td>
+   <td style="text-align:left;"> Ghana </td>
+   <td style="text-align:right;"> 132 </td>
+   <td style="text-align:right;"> 39 </td>
+   <td style="text-align:right;"> 127 </td>
+   <td style="text-align:right;"> 1 </td>
+   <td style="text-align:right;"> 4 </td>
+   <td style="text-align:right;"> 0 </td>
+   <td style="text-align:right;"> 3.0% </td>
+  </tr>
+</tbody>
+</table>
+</body>
+</html>
