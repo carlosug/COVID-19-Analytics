@@ -1,4 +1,4 @@
-# Coronavirus disease (COVID-19) data analysis Worldwide
+# Coronavirus disease (COVID-19) data analysis Worldwide (_last update: 29 March 2020_)
 Ongoing data science pipeline to process, analyse and visualise COVID-19 pandemia data. The intented goal is to illustrate with data cleaning, processing and visualisation pipelines, the most update packages and libraries for doing Data Science with R
 
 
@@ -55,7 +55,7 @@ Death rate!
 
 ![outputs/output_16_1.png](outputs/output_16_1.png)
 
-### Ranking Tables [Deprecated]
+### Ranking Tables _[Deprecated]_
 
 
 ![outputs/table1.png](outputs/table1.jpg)
