@@ -28,7 +28,7 @@ See [data science pipeline](src/script.R) for technical details regarding data c
 
 The following graphs show the development of Coronavirus consequences on a daily basis. The [outputs](/outputs) are updated on an daily basis and are generated automatically.
 
-![outputs/output_8_1.png](outputs/output_8_1.png)
+![outputs/output_8_1.png](outputs/output_12_0.png)
 
 ![outputs/output_10_0.png](outputs/output_10_0.png)
 
@@ -47,6 +47,8 @@ TOP 20 Countries
 
 
 ![outputs/output_14_1.png](outputs/output_14_1.png)
+
+![outputs/output_15_2.png](outputs/output_15_2.png)
 
 Death rate!
 ![outputs/output_15_1.png](outputs/output_15_1.png)
