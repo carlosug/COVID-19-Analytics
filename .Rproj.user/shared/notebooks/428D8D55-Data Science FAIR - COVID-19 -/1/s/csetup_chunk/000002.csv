@@ -1,2 +1,0 @@
-"0","knitr::opts_chunk$set(echo = TRUE, warning = TRUE)"
-"0","options(knitr.table.format = ""latex"")"
