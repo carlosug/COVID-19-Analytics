@@ -1,4 +1,0 @@
-"0","x <- data.confirmed.original"
-"0","x$confirmed <- x[, ncol(x)]"
-"0","x %>% select(c(Country.Region, Province.State, Lat, Long, confirmed)) %>%"
-"0","  mutate(txt=paste0(Country.Region, '-', Province.State, ':', confirmed))"

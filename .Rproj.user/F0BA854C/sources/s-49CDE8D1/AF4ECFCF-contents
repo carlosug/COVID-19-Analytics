@@ -1,7 +1,7 @@
 ---
 title: "Data Science - COVID-19"
 author: "Carlos Utrilla Guerrero"
-date: "3/30/2020"
+date: "01/04/2020"
 output: pdf_document
 df_print: paged
 documentclass: article

@@ -1,1 +1,0 @@
-"0","world.long <- data.long %>% filter(country =='World') # can be also filtered for different countries"

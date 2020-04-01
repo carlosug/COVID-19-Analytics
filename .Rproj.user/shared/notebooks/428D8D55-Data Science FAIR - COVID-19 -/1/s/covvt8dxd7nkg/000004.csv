@@ -1,5 +1,0 @@
-"0","map <- leaflet() %>% addTiles()"
-"0","#marker"
-"0","map %<>% addCircleMarkers(x$Long, x$Lat, radius = 2+log2(x$confirmed), stroke = F,"
-"0","                          color = 'red', fillOpacity = 0.3, popup = x$txt)"
-"0","map"

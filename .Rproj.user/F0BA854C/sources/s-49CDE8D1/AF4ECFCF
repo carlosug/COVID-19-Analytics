@@ -5,16 +5,16 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "1221013774",
+    "hash" : "3881109469",
     "id" : "AF4ECFCF",
-    "lastKnownWriteTime" : 1585550858,
-    "last_content_update" : 1585550858486,
+    "lastKnownWriteTime" : 1585721615,
+    "last_content_update" : 1585721615604,
     "path" : "~/Github/COVID-19/Data Science FAIR - COVID-19 -.Rmd",
     "project_path" : "Data Science FAIR - COVID-19 -.Rmd",
     "properties" : {
-        "cursorPosition" : "473,0",
-        "last_setup_crc32" : "EB675256ff262a1e",
-        "scrollLine" : "471"
+        "cursorPosition" : "3,12",
+        "last_setup_crc32" : "",
+        "scrollLine" : "0"
     },
     "read_only" : false,
     "read_only_alternatives" : [
