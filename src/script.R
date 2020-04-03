@@ -2,13 +2,6 @@
 # Aim for data processing, visualisation and statstics
 # Source code: http://yanchang.rdatamining.com/
 # set directory
-setwd("~/Github/COVID-19")
-# Data Source: 2019 Data Repository https://github.com/CSSEGISandData/COVID-19
-# R Packages:
-# This is an analysis report of the Novel Coronavirus (COVID-19)
-# Aim for data processing, visualisation and statstics
-# Source code: http://yanchang.rdatamining.com/
-# set directory
 # Data Source: 2019 Data Repository https://github.com/CSSEGISandData/COVID-19
 # R Packages:
 library(magrittr) # pipline operations
@@ -49,8 +42,6 @@ data.recovered.original <- read.csv('./data/time_series_covid19_recovered_global
 dim(data.confirmed.original)
 
 
-# Table:
-data.confirmed.original[1:10, 1:10]
 
 # check time frame of the data
 n.col <- ncol(data.confirmed.original) # 58 variables
@@ -63,6 +54,9 @@ max.date <- max(dates)
 max.date.txt <- max.date %>% format('%d %b %Y')
 min.date.txt <- min.date %>% format('%d %b Y')
 # last update on 26 March 2020 max.date
+
+
+
 
 
 # Data Preparation steps:
@@ -95,6 +89,10 @@ countries <- data %>% pull(country) %>% setdiff('Cruise Ship')
 # last 10 records when it first broke out in Spain
 data %>% filter(country =='Spain')%>% tail(10)
 
+
+
+
+
 # counts for worldwide
 data.world <- data %>% group_by(date) %>%
   summarise(country='World',
@@ -106,6 +104,8 @@ data %<>% rbind(data.world)
 
 # current confirmed cases
 data %<>% mutate(remaining.confirmed = confirmed - deaths - recovered)
+
+
 
 # Daily Increases and Death Rates
 
@@ -155,6 +155,10 @@ rates.long %<>% mutate(type =recode_factor(type, rate.daily = 'Daily',
                                            rate.lower = 'Lower bound',
                                            rate.upper = 'Upper bound'))
 
+
+
+
+
 # Visualisation
 # After preparing the data, we portrait it in various graphs
 
@@ -168,6 +172,11 @@ k<- 20
 top.countries <- data.latest.all %>% filter(ranking <= k+1) %>%
   arrange(ranking) %>% pull(country) %>% as.character()
 top.countries %>% setdiff('World') %>% print()
+
+
+
+
+
 
 names(data.latest.all)
 ## add 'Others'
@@ -185,6 +194,10 @@ data.latest %<>% select(c(country, confirmed, deaths,death.rate, confirmed.new, 
 data.latest %>% mutate(death.rate=death.rate %>% format(nsmall=1) %>% paste0('%')) %>% kable('latex', booktabs=T, row.names=T, align=c('l', rep('r', 6)), caption=paste0('Cases in Top 20 Countries - ', max.date.txt,'.'), format.args=list(big.mark=',')) %>% kable_styling(font_size=7, latex_options=c('striped', 'hold_position', 'repeat_header'))
 
 
+
+
+
+
 x <- data.confirmed.original
 x$confirmed <- x[, ncol(x)]
 x %>% select(c(Country.Region, Province.State, Lat, Long, confirmed)) %>%
@@ -197,7 +210,12 @@ map
 
 map %>% setView(5, 52,zoom = 6)
 
-world.long <- data.long %>% filter(country =='World') # can be also filtered for different countries
+
+  
+  
+  world.long <- data.long %>% filter(country =='World') # can be also filtered for different countries
+
+
 
 # area plot 
 plot1 <- world.long %>% filter(type != 'Total Confirmed') %>%
@@ -248,6 +266,9 @@ theme(axis.text.x = element_text(angle =45, hjust=1))
 
 grid.arrange(plot1, plot2, ncol=2)
 
+
+
+
 data.latest.long <- data.latest %>% filter(country!='World') %>% gather(key=type, value=count, -country)
 
 
@@ -262,6 +283,9 @@ data.latest.long %>% ggplot(aes(x=country, y=count, fill=country, group=country)
   theme(legend.title=element_blank(),
         legend.position='none',
         plot.title=element_text(size=11),axis.text=element_text(size=7), axis.text.x=element_text(angle=45, hjust=1)) + facet_wrap(~type, ncol=1, scales='free_y')
+
+
+
 
 
 # Confirmed versus Deaths
@@ -280,6 +304,10 @@ vs <- df %>% ggplot(aes(x=confirmed, y=deaths, group=country)) +
 vs
 vs + scale_x_log10() + scale_y_log10()
 
+
+
+
+
 df <- data.latest %>% filter(country %in% setdiff(top.countries, 'World'))
 
 plot1 <- df %>% ggplot(aes(x=confirmed, y=deaths, col=death.rate, size=remaining.confirmed)) + ggtitle('Number of confirmed cases and deaths in top 20 countries.') +
@@ -291,6 +319,9 @@ plot1 <- df %>% ggplot(aes(x=confirmed, y=deaths, col=death.rate, size=remaining
   scale_color_gradient(low='#f75656', high='#132B43') +
   scale_x_log10() + scale_y_log10()
 plot1
+
+
+
 
 df <- data.long %>% filter(country %in% top.countries) %<>% mutate(country=country %>% factor(levels=c(top.countries)))
 
@@ -328,6 +359,11 @@ p <- df%>% filter(!(country %in% c('World', 'China'))) %>%
 p + geom_area(aes(fill=country)) +
   labs(title=paste0('Cases worlwide (excl. China) - ', max.date.txt))
 
+
+
+
+
+
 # # # list(countries) == 'Netherlands'
 
 ## If The Netherland is not top 20, add it in and remove 'Others'
@@ -353,7 +389,10 @@ df %>% filter(type != 'World' & type !='Total Confirmed') %>%
         axis.text.x = element_text(angle=45, hjust=1)) +
   facet_wrap(~country, ncol=4, scale='free_y') + facet_wrap(~country, ncol=4, scales = 'free_y')
 
-rate.max <- rates.long$count %>% max(na.rm=T)
+
+
+  
+  rate.max <- rates.long$count %>% max(na.rm=T)
 
 df <- rates.long %>% filter(country %in% setdiff(top.countries, 'World')) %>%
   mutate(country=factor(country, levels=top.countries))
@@ -368,6 +407,10 @@ df %>% ggplot(aes(x=date, y=count, color=type)) +
   ylim(c(0, 100)) +
   facet_wrap(~country, ncol=4)
 
+
+
+
+
 ## sort the latest data by death rate, and if tie, by confirmed
 df <- data %>% filter(date == max(date) & country != 'World' & confirmed >= 100) %>% 
   select(country, confirmed, confirmed.new, remaining.confirmed,
@@ -379,4 +422,7 @@ df %>% head(20) %>%
   kable('latex', booktabs=T, row.names=T, align=c('l', rep('r', 7)),
         caption=paste0('Top 20 Countries with Highest Death Rates - ', max.date.txt), format.args=list(big.mark=',')) %>%
   kable_styling(font_size=7, latex_options=c('striped', 'hold_position', 'repeat_header'))
+
+write.csv(data.latest.all, 'data_worldwide.csv')
+write.csv(data.deaths, 'time-series_deaths.csv')
 

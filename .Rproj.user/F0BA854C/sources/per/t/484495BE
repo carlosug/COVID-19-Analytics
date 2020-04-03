@@ -5,15 +5,15 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "1412966788",
     "id" : "484495BE",
-    "lastKnownWriteTime" : 1585352584,
-    "last_content_update" : 1585352585003,
+    "lastKnownWriteTime" : 1585852433,
+    "last_content_update" : 1585852433503,
     "path" : "~/Github/COVID-19/src/script.R",
     "project_path" : "src/script.R",
     "properties" : {
-        "cursorPosition" : "26,56",
-        "scrollLine" : "0"
+        "cursorPosition" : "415,42",
+        "scrollLine" : "413"
     },
     "read_only" : false,
     "read_only_alternatives" : [
