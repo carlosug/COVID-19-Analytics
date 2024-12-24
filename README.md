@@ -1,5 +1,7 @@
 # Coronavirus disease (COVID-19) data analysis Worldwide 
 
+(Archived)
+
 (_last update: 3 April 2020_)
 
 
